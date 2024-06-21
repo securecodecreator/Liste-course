@@ -17,8 +17,8 @@ body::before {
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
-    height: 200%;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, rgba(0,255,234,0.1) 10%, transparent 10.5%);
     background-size: 20px 20px;
     animation: electrify 5s linear infinite;
