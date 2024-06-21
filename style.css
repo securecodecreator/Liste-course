@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f0f;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    color: #00ffea;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,255,234,0.1) 10%, transparent 10.5%);
+    background-size: 20px 20px;
+    animation: electrify 5s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+@keyframes electrify {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-10px, -10px); }
+    100% { transform: translate(0, 0); }
+}
+@keyframes input-focus {
+    0% { box-shadow: 0 0 5px 0 #00ffea; }
+    50% { box-shadow: 0 0 15px 10px #00ffea; }
+    100% { box-shadow: 0 0 5px 0 #00ffea; }
+}
+@keyframes add-item {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes update-total {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+h1 {
+    color: #00ffea;
+    font-size: 3em;
+    text-shadow: 0 0 5px #00ffea, 0 0 30px #00ffea;
+    margin-bottom: 20px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 20px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+input:checked + .slider {
+    background-color: #00ffea;
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+#mode-label {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+form label {
+    margin: 5px 0;
+    color: #00ffea;
+    text-shadow: 0 0 5px #00ffea;
+}
+form input[type="text"],
+form input[type="number"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #00ffea;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #000;
+    color: #00ffea;
+    transition: box-shadow 0.3s ease;
+}
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+    animation: input-focus 0.6s ease;
+    outline: none;
+}
+form button {
+    padding: 10px;
+    background-color: #00ffea;
+    border: none;
+    border-radius: 4px;
+    color: #000;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+form button:hover {
+    background-color: #00b8a3;
+}
+.reset-button {
+    padding: 10px;
+    background-color: #ff0055;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+.reset-button:hover {
+    background-color: #d40045;
+}
+table {
+    width: 100%;
+    max-width: 400px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 234, 0.5);
+}
+th, td {
+    border: 1px solid #00ffea;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #00ffea;
+    color: #000;
+}
+.checked {
+    text-decoration: line-through;
+    background-color: #0f0f0f;
+    color: #555;
+}
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+#total-price {
+    font-weight: bold;
+    color: #00ffea;
+    animation: update-total 0.3s ease;
+}
+.delete-button {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.fa-trash {
+    color: red;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    body {
+        padding: 5px;
+    }
+    h1 {
+        font-size: 1.2em;
+    }
+    form {
+        width: 100%;
+    }
+    table {
+        width: 100%;
+    }
+}
